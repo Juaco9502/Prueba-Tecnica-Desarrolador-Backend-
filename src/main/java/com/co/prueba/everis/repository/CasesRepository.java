@@ -1,5 +1,9 @@
 package com.co.prueba.everis.repository;
 
-public class CasesRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.co.prueba.everis.entity.CaseDTO;
+
+public interface CasesRepository extends JpaRepository<CaseDTO, Long>{
 
 }

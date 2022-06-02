@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.co.prueba.everis.entity.AffiliateDTO;
+import com.co.prueba.everis.exception.AffiliatesException;
 import com.co.prueba.everis.service.AffiliatesService;
 
 @RestController
@@ -25,24 +26,24 @@ public class AffiliatesController {
 	private AffiliatesService affiliatesService;
 
 	@GetMapping("/")
-	public ResponseEntity<List<AffiliateDTO>> getAllAffiliates(@RequestParam(required = false) String numeroIdentificacion) {
+	public ResponseEntity<List<AffiliateDTO>> getAllAffiliates(@RequestParam(required = false) String numeroIdentificacion) throws AffiliatesException {
 		
 		return affiliatesService.getAllAffiliate(numeroIdentificacion);
 		
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<AffiliateDTO> createAffiliates(@RequestBody AffiliateDTO affiliate) {
+	public ResponseEntity<AffiliateDTO> createAffiliates(@RequestBody AffiliateDTO affiliate) throws AffiliatesException {
 		return affiliatesService.createAffiliate(affiliate);
 	}
 	
 	@DeleteMapping("/delete/{identificacion}")
-	public ResponseEntity<HttpStatus> deleteAffiliates(@PathVariable("identificacion") String numeroIdentificacion) {
+	public ResponseEntity<HttpStatus> deleteAffiliates(@PathVariable("identificacion") String numeroIdentificacion) throws AffiliatesException {
 		return affiliatesService.deleteAffiliate(numeroIdentificacion);
 	}
 	
 	@PostMapping("/update/{identificacion}")
-	public ResponseEntity<List<AffiliateDTO>> deleteAffiliates(@PathVariable("identificacion") String numeroIdentificacion, @RequestBody AffiliateDTO affiliateInfo) {
+	public ResponseEntity<List<AffiliateDTO>> deleteAffiliates(@PathVariable("identificacion") String numeroIdentificacion, @RequestBody AffiliateDTO affiliateInfo) throws AffiliatesException {
 		return affiliatesService.updateAffiliate(numeroIdentificacion, affiliateInfo);
 	}
 }
