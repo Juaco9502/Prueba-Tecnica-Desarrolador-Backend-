@@ -32,7 +32,7 @@ public class CasesServiceImpl implements CasesService {
 			}
 			
 			if (cases.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 			return new ResponseEntity<>(cases, HttpStatus.OK);
 		} catch (Exception e) {

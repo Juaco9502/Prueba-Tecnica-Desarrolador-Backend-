@@ -29,7 +29,7 @@ public class AffiliatesServiceImpl implements AffiliatesService {
 			}
 			
 			if (affiliates.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 			return new ResponseEntity<>(affiliates, HttpStatus.OK);
 		} catch (Exception e) {
