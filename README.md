@@ -1,10 +1,10 @@
 # Prueba técnica para desarrollador backend
 
-## Class Model
+## Diagrama de clases 
 
 ![Class Model](img/pruebaEverisApplication.png)
 
-## Documentacion Swagger
+## Documentación Swagger
 
 [![Ver Documentacion Swagger](http://jessemillar.github.io/view-in-swagger-button/button.svg)](https://pruebaeveris.herokuapp.com/swagger-ui/index.html)
 
