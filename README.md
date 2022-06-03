@@ -1,4 +1,4 @@
-# Prueba técnica para desarrollador backend
+# PRUEBA TECNICA PARA DESARROLLADOR BACKEND
 
 ## Diagrama de clases 
 
