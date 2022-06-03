@@ -21,10 +21,29 @@ public class AffiliatesServiceImpl implements AffiliatesService {
 	public ResponseEntity<List<AffiliateDTO>> getAllAffiliate(String numeroIdentificacion) {
 		try {
 			List<AffiliateDTO> affiliates = new ArrayList<>();
-			if (numeroIdentificacion == null)
+			if (numeroIdentificacion == null) {
 				affiliatesRepository.findAll().forEach(affiliates::add);
-			else
+			}else {
 				affiliatesRepository.findByNumeroIdentificacion(numeroIdentificacion).forEach(affiliates::add);
+			
+			}
+			
+			if (affiliates.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+			return new ResponseEntity<>(affiliates, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	public ResponseEntity<List<AffiliateDTO>> getAffiliateByCreationDate(String fechaCreacion) {
+		try {
+			List<AffiliateDTO> affiliates = new ArrayList<>();
+			if (fechaCreacion != null) {
+				affiliatesRepository.findByFechaCreacion(fechaCreacion).forEach(affiliates::add);
+			}
+			
 			if (affiliates.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
@@ -37,7 +56,7 @@ public class AffiliatesServiceImpl implements AffiliatesService {
 
 	public ResponseEntity<AffiliateDTO> createAffiliate(AffiliateDTO affiliate) {
 		try {
-			AffiliateDTO newAffiliate = affiliatesRepository.save(new AffiliateDTO(affiliate.getNumeroIdentificacion(), affiliate.getTipoIdentificacion(), affiliate.getPrimerNombre(), affiliate.getSegundoNombre(), affiliate.getPrimerApellido(), affiliate.getSegundoApellido(), affiliate.getRiesgoCat(), affiliate.getActivo()));
+			AffiliateDTO newAffiliate = affiliatesRepository.save(new AffiliateDTO(affiliate.getNumeroIdentificacion(), affiliate.getTipoIdentificacion(), affiliate.getPrimerNombre(), affiliate.getSegundoNombre(), affiliate.getPrimerApellido(), affiliate.getSegundoApellido(), affiliate.getRiesgoCat(), affiliate.getActivo(), affiliate.getFechaCreacion()));
 			return new ResponseEntity<>(newAffiliate, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null , HttpStatus.INTERNAL_SERVER_ERROR);

@@ -13,4 +13,5 @@ public interface AffiliatesService {
 	public ResponseEntity<AffiliateDTO> createAffiliate(AffiliateDTO affiliate);
 	public ResponseEntity<HttpStatus> deleteAffiliate(String numeroIdentificacion);
 	public ResponseEntity<List<AffiliateDTO>> updateAffiliate(String numeroIdentificacion, AffiliateDTO affiliateInfo);
+	public ResponseEntity<List<AffiliateDTO>> getAffiliateByCreationDate(String fechaCreacion);
 }

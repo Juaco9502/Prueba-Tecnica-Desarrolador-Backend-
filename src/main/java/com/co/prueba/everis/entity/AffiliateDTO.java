@@ -1,6 +1,7 @@
 package com.co.prueba.everis.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,14 +43,17 @@ public class AffiliateDTO implements Serializable {
 	
 	@Column(name="ACTIVO")
 	private String activo;
+	
+	@Column(name="FECHA_CREACION")
+	private LocalDateTime fechaCreacion;
 
 	public AffiliateDTO() {
-	}
-	
-	
+	}	
 
 	public AffiliateDTO(String numeroIdentificacion, String tipoIdentificacion, String primerNombre,
-			String segundoNombre, String primerApellido, String segundoApellido, String riesgoCat, String activo) {
+			String segundoNombre, String primerApellido, String segundoApellido, String riesgoCat, String activo,
+			LocalDateTime fechaCreacion) {
+		super();
 		this.numeroIdentificacion = numeroIdentificacion;
 		this.tipoIdentificacion = tipoIdentificacion;
 		this.primerNombre = primerNombre;
@@ -58,8 +62,8 @@ public class AffiliateDTO implements Serializable {
 		this.segundoApellido = segundoApellido;
 		this.riesgoCat = riesgoCat;
 		this.activo = activo;
+		this.fechaCreacion = fechaCreacion;
 	}
-
 
 
 	public Long getAfiliadoId() {
@@ -134,12 +138,23 @@ public class AffiliateDTO implements Serializable {
 		this.activo = activo;
 	}
 
+	
+	public LocalDateTime getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDateTime fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
 	@Override
 	public String toString() {
-		return "Affiliate [afiliadoId=" + afiliadoId + ", numeroIdentificacion=" + numeroIdentificacion
+		return "AffiliateDTO [afiliadoId=" + afiliadoId + ", numeroIdentificacion=" + numeroIdentificacion
 				+ ", tipoIdentificacion=" + tipoIdentificacion + ", primerNombre=" + primerNombre + ", segundoNombre="
 				+ segundoNombre + ", primerApellido=" + primerApellido + ", segundoApellido=" + segundoApellido
-				+ ", riesgoCat=" + riesgoCat + ", activo=" + activo + "]";
+				+ ", riesgoCat=" + riesgoCat + ", activo=" + activo + ", fechaCreacion=" + fechaCreacion + "]";
 	}
+
+
 
 }

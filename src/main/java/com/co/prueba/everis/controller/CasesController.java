@@ -42,7 +42,7 @@ public class CasesController {
 	}
 	
 	@PostMapping("/update/{id}")
-	public ResponseEntity<CaseDTO> deleteCases(@PathVariable("id") Long id, @RequestBody CaseDTO caseInfo) throws CasesException {
+	public ResponseEntity<CaseDTO> updateCases(@PathVariable("id") Long id, @RequestBody CaseDTO caseInfo) throws CasesException {
 		return casesService.updateCase(id, caseInfo);
 	}
 }

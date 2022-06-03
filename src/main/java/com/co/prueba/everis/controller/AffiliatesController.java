@@ -46,4 +46,10 @@ public class AffiliatesController {
 	public ResponseEntity<List<AffiliateDTO>> deleteAffiliates(@PathVariable("identificacion") String numeroIdentificacion, @RequestBody AffiliateDTO affiliateInfo) throws AffiliatesException {
 		return affiliatesService.updateAffiliate(numeroIdentificacion, affiliateInfo);
 	}
+	
+	@GetMapping("/creationdate/{date}")
+	public ResponseEntity<List<AffiliateDTO>> getAffiliateByCreationDate(@PathVariable("date") String fechaCreacion) throws AffiliatesException {
+		return affiliatesService.getAffiliateByCreationDate(fechaCreacion);
+		
+	}
 }
